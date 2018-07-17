@@ -314,9 +314,16 @@ class FontDetails {
                     baseFont.writeFont(writer, indirectReference, new Object[]{cjkTag});
                     break;
                 case BaseFont.FONT_TYPE_TTUNI:
-                    baseFont.writeFont(writer, indirectReference, new Object[]{longTag, Boolean.valueOf(subset)});
+                    try {
+                        baseFont.writeFont(writer, indirectReference, new Object[]{longTag, Boolean.valueOf(subset)});
+                    } catch( NullPointerException e ) {
+                        throw new FontErrorException("Failed loading font [" + baseFont.getFullFontName()[0][3] + "]", e);
+                    }
                     break;
             }
+        }
+        catch(FontErrorException e) {
+            throw e;
         }
         catch(Exception e) {
             throw new ExceptionConverter(e);

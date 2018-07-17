@@ -6,7 +6,7 @@
     <groupId>com.github.librepdf</groupId>
     <artifactId>openpdf-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.1.555-SNAPSHOT</version>
 
     <licenses>
         <license>
@@ -174,6 +174,9 @@
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-gpg-plugin</artifactId>
               <version>1.6</version>
+              <configuration>
+                <skip>true</skip>
+              </configuration>
               <executions>
                 <execution>
                   <id>sign-artifacts</id>
